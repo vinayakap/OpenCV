@@ -12,12 +12,12 @@
 int main()
 {
 	//----------------------- DRAW CIRCLE ON IMAGE --------------------------
-	//cv::Mat img = cv::imread("Nature.jpg");
-	//cv::circle(img, cv::Point(250, 150), 100, cv::Scalar(0, 255, 128), -100);
-	//cv::circle(img, cv::Point(350, 150), 100, cv::Scalar(255, 255, 255), -100);
-	//cv::namedWindow("image", cv::WINDOW_NORMAL);
-	//cv::imshow("image", img);
-	//cv::waitKey(0);
+	cv::Mat img = cv::imread("Nature.jpg");
+	cv::circle(img, cv::Point(250, 150), 100, cv::Scalar(0, 255, 128), -100);
+	cv::circle(img, cv::Point(350, 150), 100, cv::Scalar(255, 255, 255), -100);
+	cv::namedWindow("image", cv::WINDOW_NORMAL);
+	cv::imshow("image", img);
+	cv::waitKey(0);
 
 	//----------------------- CAMERA FEED -----------------------------------
 	//cv::VideoCapture videoCapture;
