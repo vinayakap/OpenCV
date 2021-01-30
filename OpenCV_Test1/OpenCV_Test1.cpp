@@ -20,90 +20,35 @@ int main()
 	cv::waitKey(0);
 
 	//----------------------- CAMERA FEED -----------------------------------
-	//cv::VideoCapture videoCapture;
-	//videoCapture.open(0);
+	cv::VideoCapture videoCapture;
+	videoCapture.open(0);
 
-	//if (!videoCapture.isOpened())
-	//{
-	//	std::cerr << "Couldn't open capture!" << std::endl;
-	//	return -1;
-	//}
-	//
-	//cv::UMat bgr_frame, edges, gray;
-	//
-	//for (;;)
-	//{
-	//	videoCapture >> bgr_frame;
-	//	if (bgr_frame.empty()) break;
-	//
-	//	cv::cvtColor(bgr_frame, gray, cv::COLOR_BGR2GRAY);
-	//	cv::imshow("gray", gray);
-	//	cv::Canny(gray, edges, 10, 100, 3, true);
-	//	cv::imshow("edges", edges);
-	//	char c = cv::waitKey(10);
-	//	if (c == 27) break;
-	//}
-	//videoCapture.release();
+	if (!videoCapture.isOpened())
+	{
+		std::cerr << "Couldn't capture!" << std::endl;
+		return -1;
+	}
+	
+	cv::UMat bgr_frame;
+	cv::UMat edges;
+	cv::UMat gray;
+	
+	for (;;)
+	{
+		videoCapture >> bgr_frame;
 
+		if (bgr_frame.empty()) break;
+	
+		cv::cvtColor(bgr_frame, gray, cv::COLOR_BGR2GRAY);
+		cv::imshow("gray", gray);
+		cv::Canny(gray, edges, 10, 100, 3, true);
+		cv::imshow("edges", edges);
+		
+		char c = cv::waitKey(10);
+		if (c == 27) break;
+	}
 
-	//------------------------ REALTIME EXP ------------------------------
-
-	//cv::VideoCapture videoCapture("The-Horse-in-Motion-anim.gif");
-	//cv::VideoCapture videoCapture(0);
-	//if (!videoCapture.isOpened())
-	//{
-	//	std::cerr << "couldn't open capture!" << std::endl;
-	//	return -1;
-	//}
-
-	//cv::UMat bgr_frame, edges, gray, blur_gray, edges2;
-	//
-	//double threshold1 = 20;
-	//double threshold2 = 100;
-	//int apertueSize = 3;
-	//int counter = 1;
-
-	//for (;;)
-	//{
-	//	counter++;
-	//	if (counter <= 1) { counter = 1; }
-	//	threshold1 = counter % 200;
-
-	//	if (threshold1 == 0) { threshold1 = 1; }
-
-	//	std::cout << threshold1 << " ";
-
-	//	videoCapture >> bgr_frame;
-	//
-	//	if (bgr_frame.empty()) break;
-	//
-	//	cv::cvtColor(bgr_frame, gray, cv::COLOR_BGR2GRAY);
-	//	//cv::GaussianBlur(gray, blur_gray, cv::Size(3,3), 11);
-	//	cv::imshow("gray", gray);
-	//	cv::Canny(gray, edges, threshold1, threshold2, 3, true);
-	//	cv::imshow("edges", edges);
-	//
-	//	char c = cv::waitKey(20);
-	//	if (c == 27) break;
-	//}
-	//
-	//videoCapture.release();
-
-
-	//-------------------------- LEARNING -----------------------------
-
+	videoCapture.release();
 
 	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-//
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
-//
