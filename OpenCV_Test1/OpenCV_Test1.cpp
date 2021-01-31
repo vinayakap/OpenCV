@@ -1,5 +1,5 @@
 // OpenCV_Test1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+
 
 #include "pch.h"
 #include <iostream>
@@ -11,14 +11,6 @@
 
 int main()
 {
-	//----------------------- DRAW CIRCLE ON IMAGE --------------------------
-	cv::Mat img = cv::imread("Nature.jpg");
-	cv::circle(img, cv::Point(250, 150), 100, cv::Scalar(0, 255, 128), -100);
-	cv::circle(img, cv::Point(350, 150), 100, cv::Scalar(255, 255, 255), -100);
-	cv::namedWindow("image", cv::WINDOW_NORMAL);
-	cv::imshow("image", img);
-	cv::waitKey(0);
-
 	//----------------------- CAMERA FEED -----------------------------------
 	cv::VideoCapture videoCapture;
 	videoCapture.open(0);
@@ -32,6 +24,7 @@ int main()
 	cv::UMat bgr_frame;
 	cv::UMat edges;
 	cv::UMat gray;
+	cv::UMat temp;
 	
 	for (;;)
 	{
